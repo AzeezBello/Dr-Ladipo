@@ -1,0 +1,5 @@
+import { PlaceholderImage } from "@/components/placeholder-image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+export const metadata={title:"Gallery"};
+export default function Gallery(){return <main className="pt-20"><section className="section-pad pb-12"><div className="container-xl"><p className="eyebrow text-[#7d6d60]">Results & gallery</p><h1 className="serif mt-5 text-6xl md:text-8xl">A visual library<br/><i>coming soon.</i></h1><p className="mt-7 max-w-xl text-sm leading-7 text-[#302821]/65">This gallery is intentionally using placeholders until approved patient photography and other practice-owned media are supplied for publication.</p></div></section><section className="px-5 pb-24 md:px-8"><div className="container-xl grid gap-5 md:grid-cols-3">{Array.from({length:6}).map((_,i)=><PlaceholderImage key={i} className={`aspect-[4/5] ${i===1?'md:mt-16':''}`} label="Approved image placeholder"/>)}</div><div className="mt-12 text-center"><Button asChild><Link href="/contact">Ask about a consultation</Link></Button></div></section></main>}
