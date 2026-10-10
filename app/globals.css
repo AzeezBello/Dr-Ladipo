@@ -13,14 +13,53 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin:0; background:var(--background); color:var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { margin:0; min-width:320px; overflow-x:clip; background:var(--background); color:var(--foreground); font-family: Arial, Helvetica, sans-serif; }
 ::selection { background:#0a6cc2; color:#fff; }
 .serif { font-family: Georgia, 'Times New Roman', serif; }
 .eyebrow { letter-spacing:.22em; text-transform:uppercase; font-size:.68rem; font-weight:600; }
-.section-pad { padding: 6rem 1.25rem; }
-@media(min-width:768px){.section-pad{padding:8rem 3rem;}}
+.section-pad { padding: clamp(4rem, 8vw, 8rem) 1.25rem; }
 .container-xl { max-width: 1280px; margin-inline:auto; }
+h1.serif { font-size: clamp(3rem, 8vw, 6rem); }
+
+a, button, summary { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid rgba(10,108,194,.65);
+  outline-offset: 4px;
+}
+
+.hero-copy { animation: rise-in .8s cubic-bezier(.2,.75,.25,1) both; }
+.hero-visual { animation: rise-in .9s .12s cubic-bezier(.2,.75,.25,1) both; }
+.mobile-nav-panel { transform-origin: top; animation: nav-in .22s ease-out both; }
+.interactive-card { transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+.photo-frame img { transition: transform .7s cubic-bezier(.2,.75,.25,1); }
+.mobile-nav-link { transition: background-color .2s ease, color .2s ease, padding-left .2s ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive-card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -30px rgba(10,37,64,.45); }
+  .photo-frame:hover img { transform: scale(1.025); }
+  .mobile-nav-link:hover { padding-left: 1rem; }
+}
 
 /* subtle editorial texture */
 .texture { background-image: radial-gradient(rgba(10,108,194,.08) .7px, transparent .7px); background-size: 7px 7px; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes nav-in {
+  from { opacity: 0; transform: translateY(-8px) scaleY(.98); }
+  to { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

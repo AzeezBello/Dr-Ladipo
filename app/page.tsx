@@ -29,7 +29,7 @@ export default function Home() {
         <div className="texture pointer-events-none absolute inset-0 opacity-60" />
         <div className="pointer-events-none absolute -left-32 top-40 h-96 w-96 rounded-full bg-[#7fb8e8]/30 blur-3xl" />
         <div className="relative mx-auto grid max-w-[1400px] gap-12 px-5 pb-16 pt-12 md:px-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:pb-24 lg:pt-16">
-          <div>
+          <div className="hero-copy">
             <p className="inline-flex items-center gap-2 rounded-full border border-[#0a6cc2]/20 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[.18em] text-[#0a6cc2] backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-[#0a6cc2]" /> Plastic & Aesthetic Surgery · Atlanta
             </p>
@@ -49,7 +49,7 @@ export default function Home() {
               <span className="flex items-center gap-2"><CalendarCheck size={16} className="text-[#0a6cc2]" /> Roswell, GA clinic</span>
             </div>
           </div>
-          <div className="relative">
+          <div className="hero-visual relative">
             <Photo
               src="/images/dr-ladipo-portrait.png"
               alt="Dr. Olanrewaju Ladipo smiling in the clinic"
@@ -103,7 +103,7 @@ export default function Home() {
           </div>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {procedures.map((p) => (
-              <Link href={p.href} key={p.name} className="group rounded-3xl border border-[#0a6cc2]/10 bg-white p-7 transition hover:-translate-y-1 hover:border-[#0a6cc2]/30 hover:shadow-[0_24px_50px_-24px_rgba(10,108,194,.45)]">
+              <Link href={p.href} key={p.name} className="interactive-card group rounded-3xl border border-[#0a6cc2]/10 bg-white p-6 transition hover:-translate-y-1 hover:border-[#0a6cc2]/30 hover:shadow-[0_24px_50px_-24px_rgba(10,108,194,.45)] sm:p-7">
                 <div className="flex items-start justify-between">
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#0a6cc2]/10 text-[#0a6cc2] transition group-hover:bg-[#0a6cc2] group-hover:text-white"><p.icon size={22} /></span>
                   <ArrowUpRight size={18} className="text-[#0a2540]/30 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#0a6cc2]" />
@@ -147,7 +147,7 @@ export default function Home() {
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {results.slice(0, 3).map((r) => (
-              <Link key={r.src} href="/gallery" className="group overflow-hidden rounded-3xl border border-[#0a2540]/10 bg-[#f5faff]">
+              <Link key={r.src} href="/gallery" className="interactive-card group overflow-hidden rounded-3xl border border-[#0a2540]/10 bg-[#f5faff]">
                 <Photo src={r.src} alt={`Before and after: ${r.title}`} sizes="(min-width:768px) 33vw, 100vw" className="aspect-square" imgClassName="object-cover transition duration-500 group-hover:scale-[1.03]" />
                 <div className="flex items-center justify-between p-5">
                   <div>
@@ -183,7 +183,7 @@ export default function Home() {
           <SectionHeading eyebrow="Your journey" title="From consultation to care" align="center" />
           <div className="mt-14 grid gap-5 md:grid-cols-4">
             {[["01", "Consultation", "Discuss your goals, anatomy, history, and options."], ["02", "Plan", "Build a treatment approach tailored to you."], ["03", "Care", "Receive attentive care throughout your procedure or treatment."], ["04", "Follow-up", "Track healing and progress with appropriate follow-up."]].map(([n, t, d]) => (
-              <div key={n} className="rounded-3xl border border-[#0a2540]/10 bg-white p-7">
+              <div key={n} className="interactive-card rounded-3xl border border-[#0a2540]/10 bg-white p-6 sm:p-7">
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-[#0a6cc2] text-xs font-semibold text-white">{n}</span>
                 <h3 className="serif mt-8 text-2xl text-[#0a2540]">{t}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#0a2540]/60">{d}</p>

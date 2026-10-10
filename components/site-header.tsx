@@ -43,6 +43,19 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
@@ -70,24 +83,24 @@ export function SiteHeader() {
             <Link href="/contact">Book Consultation</Link>
           </Button>
         </div>
-        <button className="grid h-10 w-10 place-items-center rounded-full text-[#0a2540] hover:bg-[#0a6cc2]/10 lg:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
+        <button type="button" className="grid h-11 w-11 place-items-center rounded-full text-[#0a2540] transition-colors hover:bg-[#0a6cc2]/10 lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close navigation" : "Open navigation"} aria-controls="mobile-navigation" aria-expanded={open}>
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <div className="border-t border-[#0a2540]/10 bg-white px-5 py-5 lg:hidden">
-          <nav className="grid gap-1">
+        <div id="mobile-navigation" className="mobile-nav-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-[#0a2540]/10 bg-white/95 px-5 py-5 shadow-[0_18px_30px_-24px_rgba(10,37,64,.5)] backdrop-blur-xl lg:hidden">
+          <nav aria-label="Mobile navigation" className="mx-auto grid max-w-xl gap-1">
             {nav.map((n) => (
               <Link
                 onClick={() => setOpen(false)}
                 key={n.href}
                 href={n.href}
-                className={`rounded-xl px-3 py-3 text-sm uppercase tracking-[.12em] ${isActive(n.href) ? "bg-[#0a6cc2]/10 text-[#0a6cc2]" : "text-[#0a2540]"}`}
+                className={`mobile-nav-link rounded-xl px-3 py-3 text-sm uppercase tracking-[.12em] ${isActive(n.href) ? "bg-[#0a6cc2]/10 text-[#0a6cc2]" : "text-[#0a2540]"}`}
               >
                 {n.label}
               </Link>
             ))}
-            <Button asChild className="mt-3">
+            <Button asChild className="mt-3 min-h-12">
               <Link onClick={() => setOpen(false)} href="/contact">Book Consultation</Link>
             </Button>
             <a href="tel:+16786498280" className="mt-2 flex items-center justify-center gap-2 py-2 text-sm text-[#0a2540]/70">
