@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/site-header";
 
 export function SiteFooter() {
@@ -30,6 +30,7 @@ export function SiteFooter() {
           <p className="eyebrow text-sage">Clinic</p>
           <div className="mt-5 space-y-4 text-sm leading-6 text-white/75">
             <p className="flex gap-3"><MapPin size={16} className="mt-1 shrink-0 text-sage" />1105 Upper Hembree Rd, Suite B<br />Roswell, GA 30076</p>
+            <a href="tel:+16786498280" className="flex items-center gap-3 hover:text-white"><Phone size={16} className="text-sage" />(678) 649-8280</a>
             <a href="mailto:info@drladipo.com" className="flex items-center gap-3 hover:text-white"><Mail size={16} className="text-sage" />info@drladipo.com</a>
           </div>
         </div>
