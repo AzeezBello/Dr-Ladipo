@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -132,9 +132,6 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <ThemeToggle />
-          <a href="tel:+16786498280" className="flex items-center gap-2 text-xs font-semibold text-ink/80 hover:text-accent">
-            <Phone size={14} /> (678) 649-8280
-          </a>
           <Button asChild size="sm">
             <Link href="/contact">Book Consultation</Link>
           </Button>
@@ -195,9 +192,6 @@ export function SiteHeader() {
             <Button asChild className="mt-3 min-h-12">
               <Link onClick={() => setOpen(false)} href="/contact">Book Consultation</Link>
             </Button>
-            <a href="tel:+16786498280" className="mt-2 flex items-center justify-center gap-2 py-2 text-sm text-ink/70">
-              <Phone size={14} /> (678) 649-8280
-            </a>
           </nav>
         </div>
       )}

@@ -222,7 +222,6 @@ export default function Home() {
             <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/75">Schedule a consultation to discuss your goals and learn which options may be appropriate for you.</p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Button asChild size="lg" className="bg-white text-deep hover:bg-sage"><Link href="/contact">Schedule Consultation</Link></Button>
-              <Button asChild size="lg" variant="outline" className="border-white/40 text-white hover:border-white hover:bg-white hover:text-deep"><a href="tel:+16786498280">Call (678) 649-8280</a></Button>
             </div>
           </div>
         </Reveal>
