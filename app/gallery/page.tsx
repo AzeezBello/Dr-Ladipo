@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Photo } from "@/components/photo";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
+import { BeforeAfterCard } from "@/components/before-after-card";
 import { practicePhotos, results } from "@/lib/media";
 
 export const metadata = { title: "Gallery" };
@@ -9,44 +11,40 @@ export const metadata = { title: "Gallery" };
 export default function Gallery() {
   return (
     <main className="pt-20">
-      <section className="section-pad pb-12 bg-gradient-to-b from-[#e4f1fc] to-[#f5faff]">
+      <section className="section-pad pb-12 bg-gradient-to-b from-cream to-ivory">
         <div className="container-xl">
-          <p className="eyebrow text-[#0a6cc2]">Results & gallery</p>
-          <h1 className="serif mt-5 text-6xl text-[#0a2540] md:text-8xl">Real patients.<br /><i className="text-[#0a6cc2]">Real results.</i></h1>
-          <p className="mt-7 max-w-xl text-sm leading-7 text-[#0a2540]/65">A selection of before-and-after outcomes from the practice. Individual results vary and depend on anatomy, health, lifestyle, and adherence to aftercare.</p>
+          <p className="eyebrow text-accent">Results & gallery</p>
+          <h1 className="serif mt-5 text-6xl text-ink md:text-8xl">Real patients.<br /><i className="text-accent">Real results.</i></h1>
+          <p className="mt-7 max-w-xl text-sm leading-7 text-ink/65">A selection of before-and-after outcomes from the practice. Individual results vary and depend on anatomy, health, lifestyle, and adherence to aftercare.</p>
         </div>
       </section>
 
-      <section className="px-5 pb-24 md:px-8">
-        <div className="container-xl grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {results.map((r) => (
-            <figure key={r.src} className="overflow-hidden rounded-3xl border border-[#0a2540]/10 bg-white">
-              <Photo src={r.src} alt={`Before and after: ${r.title}`} sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" className="aspect-square" />
-              <figcaption className="p-5">
-                <p className="text-[10px] uppercase tracking-[.16em] text-[#0a6cc2]">{r.category}</p>
-                <p className="serif mt-1 text-xl text-[#0a2540]">{r.title}</p>
-              </figcaption>
-            </figure>
+      <section className="texture-warm bg-cream px-5 py-16 md:px-8 md:py-24">
+        <div className="container-xl grid grid-flow-dense gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {results.map((r, i) => (
+            <Reveal key={r.src} delay={(i % 3) * 80} className={r.ratio === "2/1" ? "md:col-span-2" : ""}>
+              <BeforeAfterCard result={r} tone="ivory" linkToProcedure sizes={r.ratio === "2/1" ? "(min-width:1024px) 66vw, 100vw" : "(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"} />
+            </Reveal>
           ))}
-          <div className="flex flex-col justify-between rounded-3xl bg-gradient-to-br from-[#0a6cc2] to-[#0b3c73] p-8 text-white">
+          <Reveal className="flex flex-col justify-between rounded-card bg-gradient-to-br from-brand to-deep p-8 text-white">
             <p className="eyebrow text-white/70">Your consultation</p>
             <div>
               <p className="serif text-3xl leading-tight">Wondering what may be possible for you?</p>
-              <Button asChild className="mt-6 bg-white text-[#0a2540] hover:bg-[#e4f1fc]"><Link href="/contact">Ask about a consultation</Link></Button>
+              <Button asChild className="mt-6 bg-white text-deep hover:bg-sage"><Link href="/contact">Ask about a consultation</Link></Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section-pad bg-[#e4f1fc]">
+      <section className="section-pad bg-cream">
         <div className="container-xl">
-          <SectionHeading eyebrow="Inside the practice" title="Care, community & continued learning." />
+          <Reveal><SectionHeading eyebrow="Inside the practice" title="Care, community & continued learning." /></Reveal>
           <div className="mt-14 columns-1 gap-5 sm:columns-2 lg:columns-3">
             {practicePhotos.map((p, i) => (
-              <figure key={p.src} className="mb-5 break-inside-avoid overflow-hidden rounded-3xl bg-white">
+              <Reveal key={p.src} as="figure" delay={i * 60} className="mb-5 break-inside-avoid overflow-hidden rounded-card bg-surface">
                 <Photo src={p.src} alt={p.alt} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className={i % 3 === 1 ? "aspect-square" : "aspect-[4/5]"} imgClassName="object-cover object-top" />
-                <figcaption className="px-5 py-4 text-xs uppercase tracking-[.14em] text-[#0a2540]/60">{p.caption}</figcaption>
-              </figure>
+                <figcaption className="px-5 py-4 text-xs uppercase tracking-[.14em] text-ink/60">{p.caption}</figcaption>
+              </Reveal>
             ))}
           </div>
         </div>

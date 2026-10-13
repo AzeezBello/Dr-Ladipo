@@ -4,8 +4,8 @@ import { Logo } from "@/components/site-header";
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-[#0a2540] text-[#f5faff]">
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-[#0a6cc2]/25 blur-3xl" />
+    <footer className="relative overflow-hidden bg-deep text-white">
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand/25 blur-3xl" />
       <div className="container-xl relative grid gap-12 px-5 py-16 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
           <Logo light />
@@ -17,7 +17,7 @@ export function SiteFooter() {
           </a>
         </div>
         <div>
-          <p className="eyebrow text-[#7fb8e8]">Explore</p>
+          <p className="eyebrow text-sage">Explore</p>
           <div className="mt-5 grid gap-3 text-sm text-white/75">
             <Link className="hover:text-white" href="/about">About Dr. Ladipo</Link>
             <Link className="hover:text-white" href="/procedures">Procedures</Link>
@@ -27,11 +27,11 @@ export function SiteFooter() {
           </div>
         </div>
         <div>
-          <p className="eyebrow text-[#7fb8e8]">Clinic</p>
+          <p className="eyebrow text-sage">Clinic</p>
           <div className="mt-5 space-y-4 text-sm leading-6 text-white/75">
-            <p className="flex gap-3"><MapPin size={16} className="mt-1 shrink-0 text-[#7fb8e8]" />1105 Upper Hembree Rd, Suite B<br />Roswell, GA 30076</p>
-            <a href="tel:+16786498280" className="flex items-center gap-3 hover:text-white"><Phone size={16} className="text-[#7fb8e8]" />(678) 649-8280</a>
-            <a href="mailto:info@drladipo.com" className="flex items-center gap-3 hover:text-white"><Mail size={16} className="text-[#7fb8e8]" />info@drladipo.com</a>
+            <p className="flex gap-3"><MapPin size={16} className="mt-1 shrink-0 text-sage" />1105 Upper Hembree Rd, Suite B<br />Roswell, GA 30076</p>
+            <a href="tel:+16786498280" className="flex items-center gap-3 hover:text-white"><Phone size={16} className="text-sage" />(678) 649-8280</a>
+            <a href="mailto:info@drladipo.com" className="flex items-center gap-3 hover:text-white"><Mail size={16} className="text-sage" />info@drladipo.com</a>
           </div>
         </div>
       </div>
